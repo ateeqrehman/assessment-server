@@ -1,0 +1,1 @@
+This is a simple Spring boot application expsoing Rest API calls to generate the phone number combinations for a given valid 7 or 10 digit phone number
