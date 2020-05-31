@@ -15,55 +15,55 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1")
 public class PhoneController {
-	
+
 	private static Map<String, String> phone = new HashMap<String, String>() {{
 		put("1", "1");
 		put("0", "0");
 		put("2", "2ABC");
-	    put("3", "3DEF");
-	    put("4", "4GHI");
-	    put("5", "5JKL");
-	    put("6", "6MNO");
-	    put("7", "7PQRS");
-	    put("8", "8TUV");
-	    put("9", "9WXYZ");
-	    
-	  }};
+		put("3", "3DEF");
+		put("4", "4GHI");
+		put("5", "5JKL");
+		put("6", "6MNO");
+		put("7", "7PQRS");
+		put("8", "8TUV");
+		put("9", "9WXYZ");
 
-	  private List<String> output = new ArrayList<String>();
+	}};
 
-	  public void backtrack(String combination, String next_digits) {
-	    // if there is no more digits to check
-	    if (next_digits.length() == 0) {
-	      // the combination is done
-	      output.add(combination);
-	    }
-	    // if there are still digits to check
-	    else {
-	      // iterate over all letters which map 
-	      // the next available digit
-	      String digit = next_digits.substring(0, 1);
-	      String letters = phone.get(digit);
-	      for (int i = 0; i < letters.length(); i++) {
-	        String letter = phone.get(digit).substring(i, i + 1);
-	        // append the current letter to the combination
-	        // and proceed to the next digits
-	        backtrack(combination + letter, next_digits.substring(1));
-	      }
-	    }
-	  }
-	  
-	  public List<String> letterCombinations(String digits) {
-		    if (digits.length() != 0)
-		      backtrack("", digits);
-		    return output;
-		  }
-	  
-	 
-    @GetMapping("/phonenumbers/{phoneNumber}")
-    public List<String> getAllPhoneCombinations(@PathVariable(value = "phoneNumber") String phoneNumber)
-         {
+	private List<String> output = new ArrayList<String>();
+
+	public void backtrack(String combination, String next_digits) {
+		// if there is no more digits to check
+		if (next_digits.length() == 0) {
+			// the combination is done
+			output.add(combination);
+		}
+		// if there are still digits to check
+		else {
+			// iterate over all letters which map 
+			// the next available digit
+			String digit = next_digits.substring(0, 1);
+			String letters = phone.get(digit);
+			for (int i = 0; i < letters.length(); i++) {
+				String letter = phone.get(digit).substring(i, i + 1);
+				// append the current letter to the combination
+				// and proceed to the next digits
+				backtrack(combination + letter, next_digits.substring(1));
+			}
+		}
+	}
+
+	public List<String> letterCombinations(String digits) {
+		if (digits.length() != 0)
+			backtrack("", digits);
+		return output;
+	}
+
+
+	@GetMapping("/phonenumbers/{phoneNumber}")
+	public List<String> getAllPhoneCombinations(@PathVariable(value = "phoneNumber") String phoneNumber)
+	{
 		output = new ArrayList<String>();
 		return letterCombinations(phoneNumber);
-    }
+	}
 }
