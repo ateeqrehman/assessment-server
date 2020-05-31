@@ -19,14 +19,14 @@ public class PhoneController {
 	private static Map<String, String> phone = new HashMap<String, String>() {{
 		put("1", "1");
 		put("0", "0");
-		put("2", "2abc");
-	    put("3", "3def");
-	    put("4", "4ghi");
-	    put("5", "5jkl");
-	    put("6", "6mno");
-	    put("7", "7pqrs");
-	    put("8", "8tuv");
-	    put("9", "9wxyz");
+		put("2", "2ABC");
+	    put("3", "3DEF");
+	    put("4", "4GHI");
+	    put("5", "5JKL");
+	    put("6", "6MNO");
+	    put("7", "7PQRS");
+	    put("8", "8TUV");
+	    put("9", "9WXYZ");
 	    
 	  }};
 
